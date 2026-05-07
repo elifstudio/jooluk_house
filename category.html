@@ -5,6 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jooluk House</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <meta name="description" content="Красивые шарфы для вас — Jooluk House" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jooluk House" />
+  <meta property="og:title" content="Jooluk House" />
+  <meta property="og:description" content="Красивые шарфы для вас — Jooluk House" />
+  <meta property="og:image" content="main.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -116,6 +124,17 @@
         setLang(l) {
           this.lang = l
           localStorage.setItem('jooluk_lang', l)
+          this.updateMeta()
+        },
+        updateMeta() {
+          const title = this.currentCategory
+            ? this.t(this.currentCategory.name) + ' — Jooluk House'
+            : 'Jooluk House'
+          const desc = this.ui.metaDescription || ''
+          document.title = title
+          document.querySelector('meta[name="description"]').setAttribute('content', desc)
+          document.querySelector('meta[property="og:title"]').setAttribute('content', title)
+          document.querySelector('meta[property="og:description"]').setAttribute('content', desc)
         }
       },
       async mounted() {
@@ -133,9 +152,7 @@
         this.currentCategory = data.categories.find(c => c.id === catId) || null
         this.scarfs = data.scarfs.filter(s => s.categoryId === catId)
 
-        if (this.currentCategory) {
-          document.title = (this.currentCategory.name[this.lang] || this.currentCategory.name.ru) + ' — Jooluk House'
-        }
+        this.updateMeta()
       }
     }).mount('#app')
   </script>

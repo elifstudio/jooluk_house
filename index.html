@@ -5,6 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jooluk House</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <meta name="description" content="Красивые шарфы для вас — Jooluk House" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jooluk House" />
+  <meta property="og:title" content="Jooluk House" />
+  <meta property="og:description" content="Красивые шарфы для вас — Jooluk House" />
+  <meta property="og:image" content="main.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -104,6 +112,12 @@
         setLang(l) {
           this.lang = l
           localStorage.setItem('jooluk_lang', l)
+          this.updateMeta()
+        },
+        updateMeta() {
+          const desc = this.ui.metaDescription || ''
+          document.querySelector('meta[name="description"]').setAttribute('content', desc)
+          document.querySelector('meta[property="og:description"]').setAttribute('content', desc)
         }
       },
       async mounted() {
@@ -113,6 +127,7 @@
         this.instagramUrl = data.instagramUrl || '#'
         this.whatsappNumber = data.whatsappNumber || ''
         this.allUi = data.ui || {}
+        this.updateMeta()
       }
     }).mount('#app')
   </script>

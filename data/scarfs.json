@@ -12,7 +12,8 @@
       "items": "товар(ов)",
       "categories": "Категории",
       "allRightsReserved": "Все права защищены",
-      "whatsappMessage": "Здравствуйте! Меня интересует"
+      "whatsappMessage": "Здравствуйте! Меня интересует",
+      "metaDescription": "Красивые шарфы для вас — Jooluk House"
     },
     "kg": {
       "shopByCategory": "Коллекциялар",
@@ -23,7 +24,8 @@
       "items": "буюм",
       "categories": "Категориялар",
       "allRightsReserved": "Бардык укуктар корголгон",
-      "whatsappMessage": "Салам! Мени кызыктырат"
+      "whatsappMessage": "Салам! Мени кызыктырат",
+      "metaDescription": "Сиз үчүн сонун жоолуктар — Jooluk House"
     }
   },
   "categories": [{
