@@ -19,6 +19,18 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.site-footer {
+  margin-top: auto;
 }
 
 a {
@@ -176,15 +188,15 @@ img {
    HERO
    ============================================ */
 .hero {
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
   overflow: hidden;
 }
 
 .hero img {
   width: 100%;
-  height: 50vw;
-  max-height: 520px;
-  object-fit: cover;
+  height: auto;
+  display: block;
 }
 
 /* ============================================
@@ -209,6 +221,12 @@ img {
 }
 
 @media (min-width: 600px) {
+  .hero {
+    width: 80%;
+  }
+}
+
+@media (min-width: 600px) {
   .category-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -218,7 +236,7 @@ img {
 
 .category-card {
   position: relative;
-  aspect-ratio: 10/11;
+  aspect-ratio: 10/12.65;
   overflow: hidden;
   display: block;
 }
@@ -259,7 +277,6 @@ img {
   font-size: 12px;
   color: var(--color-muted);
   border-top: 1px solid var(--color-border);
-  margin-top: 48px;
   letter-spacing: 0.06em;
 }
 
@@ -332,7 +349,7 @@ img {
 
 .scarf-thumb {
   position: relative;
-  aspect-ratio: 10/13;
+  aspect-ratio: 10/14.95;
   overflow: hidden;
 }
 
@@ -456,14 +473,35 @@ img {
 .detail-main-wrap {
   flex: 1;
   order: 1;
+  position: relative;
+  cursor: zoom-in;
 }
 
 .detail-main-img {
   width: 100%;
-  aspect-ratio: 4/5;
+  aspect-ratio: 4/5.75;
   object-fit: cover;
-  cursor: zoom-in;
   display: block;
+}
+
+.detail-expand-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.detail-expand-icon svg {
+  width: 15px;
+  height: 15px;
+  color: var(--color-text);
 }
 
 .detail-info {
@@ -579,8 +617,13 @@ img {
   background: rgba(255, 255, 255, 0.25);
 }
 
-.lightbox-prev { left: 12px; }
-.lightbox-next { right: 12px; }
+.lightbox-prev {
+  left: 12px;
+}
+
+.lightbox-next {
+  right: 12px;
+}
 
 /* ============================================
    BACK LINK
