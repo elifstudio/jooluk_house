@@ -34,7 +34,7 @@
         "ru": "Кашемировая коллекция",
         "kg": "Кашемир коллекциясы"
       },
-      "image": "/data/images/monogram/floAtlasEkru1.jpg"
+      "image": "/images/monogram/floAtlasEkru1.jpg"
     },
     {
       "id": 2,
@@ -42,7 +42,7 @@
         "ru": "Шёлковая элегантность",
         "kg": "Жибек элегантуулугу"
       },
-      "image": "/data/images/liora/lioraLuxeBordo2.webp"
+      "image": "/images/liora/lioraLuxeBordo2.webp"
     },
     {
       "id": 3,
@@ -50,7 +50,7 @@
         "ru": "Шерстяное тепло",
         "kg": "Жүн жылуулугу"
       },
-      "image": "/data/images/rinaflo/rinaBlokBej2.jpg"
+      "image": "/images/rinaflo/rinaBlokBej2.jpg"
     },
     {
       "id": 4,
@@ -58,7 +58,7 @@
         "ru": "Летний бриз",
         "kg": "Жайкы шамал"
       },
-      "image": "/data/images/soft/softFlorinaTurkuaz1.jpg"
+      "image": "/images/soft/softFlorinaTurkuaz1.jpg"
     },
     {
       "id": 5,
@@ -81,7 +81,7 @@
         "ru": "Классический кремовый кашемировый шарф, невероятно мягкий и тёплый. Идеален для прохладных вечеров и торжественных мероприятий.",
         "kg": "Классикалык кремдик кашемир жоолук, өтө жумшак жана жылуу. Салкын кечки мезгилдер үчүн идеалдуу."
       },
-      "images": ["/data/images/monogram/floAtlasEkru1.jpg", "/data/images/monogram/floAtlasEkru2.jpg", "/data/images/monogram/floAtlasEkru3.jpg"]
+      "images": ["/images/monogram/floAtlasEkru1.jpg", "/images/monogram/floAtlasEkru2.jpg", "/images/monogram/floAtlasEkru3.jpg"]
     },
     {
       "id": 2,
