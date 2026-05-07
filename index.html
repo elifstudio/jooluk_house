@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jooluk House</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div id="app" v-cloak>
+
+    <!-- Side menu overlay -->
+    <div class="menu-overlay" :class="{ active: menuOpen }" @click="menuOpen = false"></div>
+
+    <!-- Slide-in side menu (from left) -->
+    <aside class="side-menu" :class="{ open: menuOpen }">
+      <div class="side-menu-head">
+        <span class="side-menu-label">{{ ui.categories }}</span>
+        <button class="menu-close" @click="menuOpen = false" aria-label="Close menu">&times;</button>
+      </div>
+      <nav>
+        <ul>
+          <li v-for="cat in categories" :key="cat.id">
+            <a :href="'category.html?cat=' + cat.id">{{ t(cat.name) }}</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="site-header">
+      <button class="menu-toggle" @click="menuOpen = true" aria-label="Open menu">
+        <img src="icons/menu.svg" alt="" width="22" height="16" />
+      </button>
+      <a href="index.html">
+        <img src="logo.png" alt="Jooluk House" class="site-logo" />
+      </a>
+      <div class="lang-switcher">
+        <button :class="{ active: lang === 'ru' }" @click="setLang('ru')">RU</button>
+        <span>|</span>
+        <button :class="{ active: lang === 'kg' }" @click="setLang('kg')">KG</button>
+      </div>
+    </header>
+
+    <!-- Hero image -->
+    <section class="hero">
+      <img src="main.jpg" alt="Jooluk House Collection" />
+    </section>
+
+    <!-- Category grid -->
+    <p class="section-label">{{ ui.shopByCategory }}</p>
+    <section class="category-grid">
+      <a v-for="cat in categories.slice(0, 4)" :key="cat.id" :href="'category.html?cat=' + cat.id" class="category-card">
+        <img :src="cat.image" :alt="t(cat.name)" />
+        <span class="category-card-label">{{ t(cat.name) }}</span>
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>&copy; {{ year }} Jooluk House. {{ ui.allRightsReserved }}.</span>
+      <div class="footer-social">
+        <a :href="instagramUrl" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="icons/instagram.svg" alt="Instagram" width="20" height="20" />
+        </a>
+        <a :href="'https://wa.me/' + whatsappNumber" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <img src="icons/whatsapp.svg" alt="WhatsApp" width="20" height="20" />
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script>
+    Vue.createApp({
+      data() {
+        return {
+          menuOpen: false,
+          categories: [],
+          instagramUrl: '',
+          whatsappNumber: '',
+          lang: localStorage.getItem('jooluk_lang') || 'ru',
+          allUi: {},
+          year: new Date().getFullYear()
+        }
+      },
+      computed: {
+        ui() {
+          return this.allUi[this.lang] || this.allUi['ru'] || {}
+        },
+        t() {
+          const lang = this.lang
+          return (obj) => {
+            if (!obj) return ''
+            if (typeof obj === 'object') return obj[lang] || obj.ru || ''
+            return obj
+          }
+        }
+      },
+      methods: {
+        setLang(l) {
+          this.lang = l
+          localStorage.setItem('jooluk_lang', l)
+        }
+      },
+      async mounted() {
+        const res = await fetch('data/scarfs.json')
+        const data = await res.json()
+        this.categories = data.categories
+        this.instagramUrl = data.instagramUrl || '#'
+        this.whatsappNumber = data.whatsappNumber || ''
+        this.allUi = data.ui || {}
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>
